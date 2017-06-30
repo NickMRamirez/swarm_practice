@@ -5,6 +5,11 @@ services:
     image: nginx:latest
     ports: 
       - "80:80"
+    volumes:
+      - /dev/log:/dev/log
+    logging:
+      driver: syslog
+      options:
+        syslog-address: unixgram:///dev/log
     deploy:
       replicas: 3
-    
